@@ -1,12 +1,65 @@
+// Modules and Variables
+	// @import "partials/settings";
+	@import "modules/all";
+
+	@import "bourbon";
+
+/* ==========================================================================
+	Default values in case they haven't been defined in _base
+========================================================================== */
+$mobile:				rem(320);
+$mobileLandscape:		rem(480);
+$tablet:				rem(768);
+$tabletLandscape:		rem(1024);
+$desktop:				rem(1280);
+$desktopWide:			rem(1500);
+
+$grid-column-width: 72 !default;
+$grid-gutter-width: 36 !default;
+$grid-columns: 12 !default;
+$grid-max-width: 1260 !default;
+
+// Turn gutter columns into percentages rather than explicit pixels
+$grid-column-width-percentage: $grid-column-width / $grid-max-width * 100;
+$grid-gutter-width-percentage: $grid-gutter-width / $grid-max-width * 100;
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
 *, *:before, *:after {
 	box-sizing: border-box;
 }
 
+%column {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
 .row {
-	display: flex;
-	flex: 0 1 auto;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin-right: -1rem;
-	margin-left: -1rem;
+	display: block;
+	@include mq(mobile-landscape){
+		display: flex;
+		flex: 0 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	max-width: rem($grid-max-width);
+	background: wheat;
+	margin: 0 auto rem($grid-gutter-width);
+
+	div[class^="col"]:last-child { margin-right: 0; }
+}
+
+@for $i from 1 through $grid-columns {
+    .col-#{$i} {
+        @extend %column;
+        background: rebeccapurple;
+        margin:0 $grid-gutter-width-percentage+% 0 0;
+        @include mq(mobile-landscape){
+			max-width: $grid-column-width-percentage * $i + ($i - 1) * $grid-gutter-width-percentage+%;
+        }
+    }
 }

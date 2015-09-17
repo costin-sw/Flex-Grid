@@ -1,24 +1,196 @@
+/* ==========================================================================
+	Import All Modules
+========================================================================= */
+/* ==========================================================================
+	Mixins
+========================================================================= */
+/* MEDIA QUERIES */
+/* ABSOLUTE CENTER */
+/* SELECTION */
+/* ==========================================================================
+	Placeholders
+========================================================================= */
+/* ==========================================================================
+	Extends
+========================================================================= */
+/* ==========================================================================
+	Default values in case they haven't been defined in _base
+========================================================================== */
+body {
+  margin: 0;
+  padding: 0;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
 .row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  margin-right: -1rem;
-  margin-left: -1rem;
+  display: block;
+  max-width: 78.75rem;
+  background: wheat;
+  margin: 0 auto 2.25rem;
+}
+
+@media (min-width: 30rem) {
+  .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+}
+
+.row div[class^="col"]:last-child {
+  margin-right: 0;
+}
+
+.col-1 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-1 {
+    max-width: 5.71429%;
+  }
+}
+
+.col-2 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-2 {
+    max-width: 14.28571%;
+  }
+}
+
+.col-3 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-3 {
+    max-width: 22.85714%;
+  }
+}
+
+.col-4 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-4 {
+    max-width: 31.42857%;
+  }
+}
+
+.col-5 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-5 {
+    max-width: 40%;
+  }
+}
+
+.col-6 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-6 {
+    max-width: 48.57143%;
+  }
+}
+
+.col-7 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-7 {
+    max-width: 57.14286%;
+  }
+}
+
+.col-8 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-8 {
+    max-width: 65.71429%;
+  }
+}
+
+.col-9 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-9 {
+    max-width: 74.28571%;
+  }
+}
+
+.col-10 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-10 {
+    max-width: 82.85714%;
+  }
+}
+
+.col-11 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-11 {
+    max-width: 91.42857%;
+  }
+}
+
+.col-12 {
+  background: rebeccapurple;
+  margin: 0 2.85714% 0 0;
+}
+
+@media (min-width: 30rem) {
+  .col-12 {
+    max-width: 100%;
+  }
 }
