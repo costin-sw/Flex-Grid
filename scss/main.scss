@@ -1,65 +1,102 @@
-// Modules and Variables
-	// @import "partials/settings";
+/* ==========================================================================
+	Import required files/librarys
+========================================================================== */
+
+	@import "partials/settings";
 	@import "modules/all";
 
-	@import "bourbon";
+/* ==========================================================================
+	Default values in case they haven't been defined in _settings
+========================================================================== */
+
+	$mobile:				rem(320) !default;
+	$mobileLandscape:		rem(480) !default;
+	$tablet:				rem(768) !default;
+	$tabletLandscape:		rem(1024) !default;
+	$desktop:				rem(1280) !default;
+	$desktopWide:			rem(1500) !default;
+
+	$grid-column-width: 72 !default;
+	$grid-gutter-width: 36 !default;
+	$grid-columns: 12 !default;
+	$grid-max-width: 1260 !default;
 
 /* ==========================================================================
-	Default values in case they haven't been defined in _base
+	Turn column width/gutter into percentages rather than explicit pixels
 ========================================================================== */
-$mobile:				rem(320);
-$mobileLandscape:		rem(480);
-$tablet:				rem(768);
-$tabletLandscape:		rem(1024);
-$desktop:				rem(1280);
-$desktopWide:			rem(1500);
 
-$grid-column-width: 72 !default;
-$grid-gutter-width: 36 !default;
-$grid-columns: 12 !default;
-$grid-max-width: 1260 !default;
+	$grid-column-width-percentage: $grid-column-width / $grid-max-width * 100;
+	$grid-gutter-width-percentage: $grid-gutter-width / $grid-max-width * 100;
 
-// Turn gutter columns into percentages rather than explicit pixels
-$grid-column-width-percentage: $grid-column-width / $grid-max-width * 100;
-$grid-gutter-width-percentage: $grid-gutter-width / $grid-max-width * 100;
+/* ==========================================================================
+	Setup basics
+========================================================================== */
 
-body {
-	margin: 0;
-	padding: 0;
-}
-
-*, *:before, *:after {
-	box-sizing: border-box;
-}
-
-%column {
-    position: relative;
-    width: 100%;
-    display: block;
-}
-
-.row {
-	display: block;
-	@include mq(mobile-landscape){
-		display: flex;
-		flex: 0 1 auto;
-		flex-direction: row;
-		flex-wrap: wrap;
+	body {
+		margin: 0;
+		padding: 0;
 	}
-	max-width: rem($grid-max-width);
-	background: wheat;
-	margin: 0 auto rem($grid-gutter-width);
 
-	div[class^="col"]:last-child { margin-right: 0; }
-}
+	*, *:before, *:after {
+		box-sizing: border-box;
+	}
 
-@for $i from 1 through $grid-columns {
-    .col-#{$i} {
-        @extend %column;
-        background: rebeccapurple;
-        margin:0 $grid-gutter-width-percentage+% 0 0;
-        @include mq(mobile-landscape){
-			max-width: $grid-column-width-percentage * $i + ($i - 1) * $grid-gutter-width-percentage+%;
-        }
-    }
-}
+/* ==========================================================================
+	Framework magic
+========================================================================== */
+
+	%column {
+	    position: relative;
+	    width: 100%;
+	    display: block;
+	    background: rebeccapurple;
+	    flex: 1;
+	}
+
+	.row {
+		display: block;
+		@include mq(mobile-landscape){
+			display: flex;
+			flex: 0 1 auto;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		max-width: rem($grid-max-width);
+		margin: 0 auto rem($grid-gutter-width);
+		background: wheat;
+
+		*[class^="col"]:last-child { margin-right: 0; }
+	}
+	
+	/* Loop for creating columns with percentage values */
+	@for $i from 1 through $grid-columns {
+	    .col-#{$i} {
+	        @extend %column;
+	        @include mq(mobile-landscape){
+	        	@if $gutters-in-percent == true {
+	        		margin:0 $grid-gutter-width-percentage+% 0 0;
+	        	}
+	        	@else {
+	        		margin:0 $grid-gutter-width+px 0 0;
+	        	}
+				max-width: $grid-column-width-percentage * $i + ($i - 1) * $grid-gutter-width-percentage+%;
+	        }
+	    }
+	}
+
+	/* Loop for creating offset columns with percentage values */
+	@for $i from 1 through ($grid-columns)-1 {
+	    .col-offset-#{$i} {
+	        @extend %column;
+	        @if $gutters-in-percent == true {
+	        	margin-left: ($grid-column-width-percentage) * $i + ($grid-gutter-width-percentage) * $i+%;
+	        }
+	        @else {
+	        	margin-left: ($grid-column-width) * $i + ($grid-gutter-width) * $i+px;
+	        }
+	        
+	        @include mq(mobile-landscape){
+				// max-width: $grid-column-width-percentage * $i + ($i - 1) * $grid-gutter-width-percentage+%;
+	        }
+	    }
+	}

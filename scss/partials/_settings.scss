@@ -1,0 +1,31 @@
+/* ==========================================================================
+	Import required files/librarys
+========================================================================== */
+	@import "bourbon";
+
+/* ==========================================================================
+	Set break points for mq() mixin
+========================================================================== */
+	$mobile:				rem(320);
+	$mobileLandscape:		rem(480);
+	$tablet:				rem(768);
+	$tabletLandscape:		rem(1024);
+	$desktop:				rem(1280);
+	$desktopWide:			rem(1500);
+
+/* ==========================================================================
+	Set grid column & gutter widths, max width of the row and column amount in pixels.
+	This should be the same as the columns & gutters you use in your design files.
+	You can use a site like gridcalculator.dk to design a good grid.
+========================================================================== */
+
+	$grid-column-width: 72;
+	$grid-gutter-width: 36;
+	$grid-columns: 12;
+	$grid-max-width: 1260;
+
+/* ==========================================================================
+	Set frameworks mechanics to true or false
+========================================================================== */
+
+	$gutters-in-percent: true;

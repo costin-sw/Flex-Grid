@@ -1,4 +1,21 @@
 /* ==========================================================================
+	Import required files/librarys
+========================================================================== */
+/* ==========================================================================
+	Import required files/librarys
+========================================================================== */
+/* ==========================================================================
+	Set break points for mq() mixin
+========================================================================== */
+/* ==========================================================================
+	Set grid column & gutter widths, max width of the row and column amount in pixels.
+	This should be the same as the columns & gutters you use in your design files.
+	You can use a site like gridcalculator.dk to design a good grid.
+========================================================================== */
+/* ==========================================================================
+	Set frameworks mechanics to true or false
+========================================================================== */
+/* ==========================================================================
 	Import All Modules
 ========================================================================= */
 /* ==========================================================================
@@ -14,7 +31,13 @@
 	Extends
 ========================================================================= */
 /* ==========================================================================
-	Default values in case they haven't been defined in _base
+	Default values in case they haven't been defined in _settings
+========================================================================== */
+/* ==========================================================================
+	Turn column width/gutter into percentages rather than explicit pixels
+========================================================================== */
+/* ==========================================================================
+	Setup basics
 ========================================================================== */
 body {
   margin: 0;
@@ -25,17 +48,25 @@ body {
   box-sizing: border-box;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+/* ==========================================================================
+	Framework magic
+========================================================================== */
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-offset-1, .col-offset-2, .col-offset-3, .col-offset-4, .col-offset-5, .col-offset-6, .col-offset-7, .col-offset-8, .col-offset-9, .col-offset-10, .col-offset-11 {
   position: relative;
   width: 100%;
   display: block;
+  background: rebeccapurple;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .row {
   display: block;
   max-width: 78.75rem;
-  background: wheat;
   margin: 0 auto 2.25rem;
+  background: wheat;
 }
 
 @media (min-width: 30rem) {
@@ -59,138 +90,136 @@ body {
   }
 }
 
-.row div[class^="col"]:last-child {
+.row *[class^="col"]:last-child {
   margin-right: 0;
 }
 
-.col-1 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
+/* Loop for creating columns with percentage values */
 @media (min-width: 30rem) {
   .col-1 {
+    margin: 0 2.85714% 0 0;
     max-width: 5.71429%;
   }
 }
 
-.col-2 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-2 {
+    margin: 0 2.85714% 0 0;
     max-width: 14.28571%;
   }
 }
 
-.col-3 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-3 {
+    margin: 0 2.85714% 0 0;
     max-width: 22.85714%;
   }
 }
 
-.col-4 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-4 {
+    margin: 0 2.85714% 0 0;
     max-width: 31.42857%;
   }
 }
 
-.col-5 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-5 {
+    margin: 0 2.85714% 0 0;
     max-width: 40%;
   }
 }
 
-.col-6 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-6 {
+    margin: 0 2.85714% 0 0;
     max-width: 48.57143%;
   }
 }
 
-.col-7 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-7 {
+    margin: 0 2.85714% 0 0;
     max-width: 57.14286%;
   }
 }
 
-.col-8 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-8 {
+    margin: 0 2.85714% 0 0;
     max-width: 65.71429%;
   }
 }
 
-.col-9 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-9 {
+    margin: 0 2.85714% 0 0;
     max-width: 74.28571%;
   }
 }
 
-.col-10 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-10 {
+    margin: 0 2.85714% 0 0;
     max-width: 82.85714%;
   }
 }
 
-.col-11 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-11 {
+    margin: 0 2.85714% 0 0;
     max-width: 91.42857%;
   }
 }
 
-.col-12 {
-  background: rebeccapurple;
-  margin: 0 2.85714% 0 0;
-}
-
 @media (min-width: 30rem) {
   .col-12 {
+    margin: 0 2.85714% 0 0;
     max-width: 100%;
   }
+}
+
+/* Loop for creating offset columns with percentage values */
+.col-offset-1 {
+  margin-left: 8.57143%;
+}
+
+.col-offset-2 {
+  margin-left: 17.14286%;
+}
+
+.col-offset-3 {
+  margin-left: 25.71429%;
+}
+
+.col-offset-4 {
+  margin-left: 34.28571%;
+}
+
+.col-offset-5 {
+  margin-left: 42.85714%;
+}
+
+.col-offset-6 {
+  margin-left: 51.42857%;
+}
+
+.col-offset-7 {
+  margin-left: 60%;
+}
+
+.col-offset-8 {
+  margin-left: 68.57143%;
+}
+
+.col-offset-9 {
+  margin-left: 77.14286%;
+}
+
+.col-offset-10 {
+  margin-left: 85.71429%;
+}
+
+.col-offset-11 {
+  margin-left: 94.28571%;
 }
