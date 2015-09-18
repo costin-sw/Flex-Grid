@@ -1,0 +1,70 @@
+/* ==========================================================================
+	Mixins
+========================================================================= */
+
+	/* MEDIA QUERIES */
+
+	@mixin mq($point, $value: 0) {
+		@if $point == mobile {
+			@media (min-width: $mobile) { @content; }
+		}
+
+		@else if $point == mobile-landscape {
+			@media (min-width: $mobileLandscape) { @content; }
+		}
+
+		@else if $point == tablet {
+			@media (min-width: $tablet) { @content; }
+		}
+		
+		@else if $point == tablet-landscape {
+			@media (min-width: $tabletLandscape) { @content; }
+		}
+		
+		@else if $point == desktop {
+			@media (min-width: $desktop) { @content; }
+		}
+		
+		@else if $point == desktop-wide {
+			@media (min-width: $desktopWide) { @content; }
+		}
+
+		@else {
+			@media ($point: $value) { @content; }
+		}
+	}
+
+	@mixin mq-between($min, $max) {
+		@media (min-width: $min) and (max-width: $max) {
+			@content;
+		}
+	}
+
+	/* ABSOLUTE CENTER */
+
+	@mixin abCenter($axis) {
+		position: absolute;
+
+		@if $axis == "x" {
+		  left:50%;
+		  @include transform(translateX(-50%));
+		}
+
+		@if $axis == "y" {
+		  top:50%;
+		  @include transform(translateY(-50%));
+		}
+
+		@if $axis == "xy" {
+		  top:50%;
+		  left:50%;
+		  @include transform(translate(-50%, -50%));
+		}
+	}
+
+	/* SELECTION */
+
+	@mixin selection {
+	    ::-moz-selection { @content; }
+	    ::selection { @content; }
+	}

@@ -1,0 +1,108 @@
+/* ==========================================================================
+	Import required files/librarys
+========================================================================== */
+
+	@import "partials/settings";
+	@import "modules/all";
+
+/* ==========================================================================
+	Default values in case they haven't been defined in _settings
+========================================================================== */
+
+	$mobile:				rem(320) !default;
+	$mobileLandscape:		rem(480) !default;
+	$tablet:				rem(768) !default;
+	$tabletLandscape:		rem(1024) !default;
+	$desktop:				rem(1280) !default;
+	$desktopWide:			rem(1500) !default;
+
+	$grid-column-width: 72 !default;
+	$grid-gutter-width: 36 !default;
+	$grid-columns: 12 !default;
+	$grid-max-width: 1260 !default;
+
+/* ==========================================================================
+	Turn column width/gutter into percentages rather than explicit pixels
+========================================================================== */
+
+	$grid-column-width-percentage: $grid-column-width / $grid-max-width * 100;
+	$grid-gutter-width-percentage: $grid-gutter-width / $grid-max-width * 100;
+
+/* ==========================================================================
+	Framework magic
+========================================================================== */
+
+	*, *:before, *:after {
+		box-sizing: border-box;
+	}
+
+	%column {
+	    position: relative;
+	    width: 100%;
+	    display: block;
+	    flex: 1;
+	}
+
+	.row {
+		display: block;
+		@include mq(mobile-landscape){
+			display: flex;
+			flex: 0 1 auto;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		max-width: rem($grid-max-width);
+		margin: 0 auto rem($grid-gutter-width);
+
+		*[class^="col"]:last-child { margin-right: 0; }
+	}
+	
+	/* Loop for creating columns with percentage values */
+	@for $i from 1 through $grid-columns {
+	    .col-#{$i} {
+	        @extend %column;
+	        @include mq(mobile-landscape){
+	        	@if $gutters-in-percent == true {
+	        		margin:0 $grid-gutter-width-percentage+% 0 0;
+	        	}
+	        	@else {
+	        		margin:0 $grid-gutter-width+px 0 0;
+	        	}
+				max-width: $grid-column-width-percentage * $i + ($i - 1) * $grid-gutter-width-percentage+%;
+	        }
+	    }
+	}
+
+	/* Loop for creating offset columns with percentage values */
+	@for $i from 1 through ($grid-columns)-1 {
+	    .col-offset-#{$i} {
+	        @extend %column;
+	        
+	        @include mq(mobile-landscape){
+		        @if $gutters-in-percent == true {
+		        	margin-left: ($grid-column-width-percentage) * $i + ($grid-gutter-width-percentage) * $i+%;
+		        }
+		        @else {
+		        	margin-left: ($grid-column-width) * $i + ($grid-gutter-width) * $i+px;
+		        }
+	        }
+	    }
+	}
+
+/* ==========================================================================
+	Demo Page Styling
+========================================================================== */
+
+	#demo-page {
+		[class^="col-"]{
+			color: grey;
+			padding: 0 10px;
+			background: rgba(160, 160, 160, 0.1);
+			font-family: "Courier New", serif;
+			font-size: rem(14);
+		}
+
+		[class^="row"]{
+			// background: rgba(160, 160, 160, 0.1);
+		}
+	}
