@@ -29,27 +29,17 @@
 	$grid-gutter-width-percentage: $grid-gutter-width / $grid-max-width * 100;
 
 /* ==========================================================================
-	Setup basics
+	Framework magic
 ========================================================================== */
-
-	body {
-		margin: 0;
-		padding: 0;
-	}
 
 	*, *:before, *:after {
 		box-sizing: border-box;
 	}
 
-/* ==========================================================================
-	Framework magic
-========================================================================== */
-
 	%column {
 	    position: relative;
 	    width: 100%;
 	    display: block;
-	    background: rebeccapurple;
 	    flex: 1;
 	}
 
@@ -63,7 +53,6 @@
 		}
 		max-width: rem($grid-max-width);
 		margin: 0 auto rem($grid-gutter-width);
-		background: wheat;
 
 		*[class^="col"]:last-child { margin-right: 0; }
 	}
@@ -88,15 +77,32 @@
 	@for $i from 1 through ($grid-columns)-1 {
 	    .col-offset-#{$i} {
 	        @extend %column;
-	        @if $gutters-in-percent == true {
-	        	margin-left: ($grid-column-width-percentage) * $i + ($grid-gutter-width-percentage) * $i+%;
-	        }
-	        @else {
-	        	margin-left: ($grid-column-width) * $i + ($grid-gutter-width) * $i+px;
-	        }
 	        
 	        @include mq(mobile-landscape){
-				// max-width: $grid-column-width-percentage * $i + ($i - 1) * $grid-gutter-width-percentage+%;
+		        @if $gutters-in-percent == true {
+		        	margin-left: ($grid-column-width-percentage) * $i + ($grid-gutter-width-percentage) * $i+%;
+		        }
+		        @else {
+		        	margin-left: ($grid-column-width) * $i + ($grid-gutter-width) * $i+px;
+		        }
 	        }
 	    }
+	}
+
+/* ==========================================================================
+	Demo Page Styling
+========================================================================== */
+
+	#demo-page {
+		[class^="col-"]{
+			color: grey;
+			padding: 0 10px;
+			background: rgba(160, 160, 160, 0.1);
+			font-family: "Courier New", serif;
+			font-size: rem(14);
+		}
+
+		[class^="row"]{
+			// background: rgba(160, 160, 160, 0.1);
+		}
 	}

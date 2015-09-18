@@ -37,25 +37,16 @@
 	Turn column width/gutter into percentages rather than explicit pixels
 ========================================================================== */
 /* ==========================================================================
-	Setup basics
+	Framework magic
 ========================================================================== */
-body {
-  margin: 0;
-  padding: 0;
-}
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
-/* ==========================================================================
-	Framework magic
-========================================================================== */
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-offset-1, .col-offset-2, .col-offset-3, .col-offset-4, .col-offset-5, .col-offset-6, .col-offset-7, .col-offset-8, .col-offset-9, .col-offset-10, .col-offset-11 {
   position: relative;
   width: 100%;
   display: block;
-  background: rebeccapurple;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -66,7 +57,6 @@ body {
   display: block;
   max-width: 78.75rem;
   margin: 0 auto 2.25rem;
-  background: wheat;
 }
 
 @media (min-width: 30rem) {
@@ -180,46 +170,79 @@ body {
 }
 
 /* Loop for creating offset columns with percentage values */
-.col-offset-1 {
-  margin-left: 8.57143%;
+@media (min-width: 30rem) {
+  .col-offset-1 {
+    margin-left: 8.57143%;
+  }
 }
 
-.col-offset-2 {
-  margin-left: 17.14286%;
+@media (min-width: 30rem) {
+  .col-offset-2 {
+    margin-left: 17.14286%;
+  }
 }
 
-.col-offset-3 {
-  margin-left: 25.71429%;
+@media (min-width: 30rem) {
+  .col-offset-3 {
+    margin-left: 25.71429%;
+  }
 }
 
-.col-offset-4 {
-  margin-left: 34.28571%;
+@media (min-width: 30rem) {
+  .col-offset-4 {
+    margin-left: 34.28571%;
+  }
 }
 
-.col-offset-5 {
-  margin-left: 42.85714%;
+@media (min-width: 30rem) {
+  .col-offset-5 {
+    margin-left: 42.85714%;
+  }
 }
 
-.col-offset-6 {
-  margin-left: 51.42857%;
+@media (min-width: 30rem) {
+  .col-offset-6 {
+    margin-left: 51.42857%;
+  }
 }
 
-.col-offset-7 {
-  margin-left: 60%;
+@media (min-width: 30rem) {
+  .col-offset-7 {
+    margin-left: 60%;
+  }
 }
 
-.col-offset-8 {
-  margin-left: 68.57143%;
+@media (min-width: 30rem) {
+  .col-offset-8 {
+    margin-left: 68.57143%;
+  }
 }
 
-.col-offset-9 {
-  margin-left: 77.14286%;
+@media (min-width: 30rem) {
+  .col-offset-9 {
+    margin-left: 77.14286%;
+  }
 }
 
-.col-offset-10 {
-  margin-left: 85.71429%;
+@media (min-width: 30rem) {
+  .col-offset-10 {
+    margin-left: 85.71429%;
+  }
 }
 
-.col-offset-11 {
-  margin-left: 94.28571%;
+@media (min-width: 30rem) {
+  .col-offset-11 {
+    margin-left: 94.28571%;
+  }
+}
+
+/* ==========================================================================
+	Demo Page Styling
+========================================================================== */
+#demo-page [class^="col-"] {
+  color: grey;
+  padding: 0 10px;
+  background: rgba(160, 160, 160, 0.1);
+  font-family: "Courier New", serif;
+  font-size: 0.875rem;
 }
